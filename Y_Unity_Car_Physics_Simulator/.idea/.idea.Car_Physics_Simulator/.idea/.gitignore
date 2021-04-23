@@ -1,0 +1,11 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.Car_Physics_Simulator.iml
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../:\Users\hhj32\Desktop\CapstoneDesign\Youtube_Unity_Car_Physics_Simulator\Car_Physics_Simulator\.idea\.idea.Car_Physics_Simulator\.idea/dataSources/
+/dataSources.local.xml
