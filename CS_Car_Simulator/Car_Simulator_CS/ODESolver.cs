@@ -17,11 +17,12 @@ public class ODESolver
         double[] dq4 = new double[numEqns];
 
         // 현재 종속 변수와 독립 변수를 찾음
-        s = ode.S;
-        q = ode.GetAllQ();
+        s = ode.S;  //독립변수
+        q = ode.GetAllQ();  // 종속 변수
 
         // 4개의 Runge-Kutta 단계를 계산합니다.
         // getRightHandSide 메서드의 반환 값은 각 4단계에 대한 델타-q 값의 배열입니다.
+        // 0.5, 1.0 등은 가중치를 나타내고 있음
         dq1 = ode.GetRightHandSide(s, q, q, ds, 0.0);
         dq2 = ode.GetRightHandSide(s + 0.5 * ds, q, dq1, ds, 0.5);
         dq3 = ode.GetRightHandSide(s + 0.5 * ds, q, dq2, ds, 0.5);

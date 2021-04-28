@@ -21,7 +21,7 @@ public class SimpleProjectile : ODE
         SetQ(vz0, 4);
         SetQ(z0, 5);
     }
-
+    
     //  These methods return the location, velocity, 
     //  and time values
     public double GetVx()
