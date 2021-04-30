@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/.idea.Y_Unity_Car_Physics_Simulator.iml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml

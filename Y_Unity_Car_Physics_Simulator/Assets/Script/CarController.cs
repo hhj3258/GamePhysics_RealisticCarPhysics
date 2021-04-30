@@ -91,6 +91,8 @@ public class CarController : MonoBehaviour
             mesh.transform.Rotate(rb.velocity.magnitude * 
                                   (transform.InverseTransformDirection(rb.velocity).z >= 0 ? 1 : -1)
                                   / (2 * Mathf.PI * 0.33f), 0f, 0f );
+            Debug.Log(rb.velocity.magnitude * 
+                      (transform.InverseTransformDirection(rb.velocity).z));
         }
     }
 }

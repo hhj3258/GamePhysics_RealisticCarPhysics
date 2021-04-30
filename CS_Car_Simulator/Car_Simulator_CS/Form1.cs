@@ -401,8 +401,7 @@ namespace Car_Simulator_CS
             car.UpdateLocationAndVelocity(timeIncrement);
 
             //  Compute the new engine rpm value
-            double rpm = car.GetVx() * 60.0 * car.GetGearRatio() *
-                  car.FinalDriveRatio / (2.0 * Math.PI * car.WheelRadius);
+            double rpm = car.GetVx() * 60.0 * car.GetGearRatio() * car.FinalDriveRatio / (2.0 * Math.PI * car.WheelRadius);
             car.OmegaE = rpm;
 
             //  If the rpm exceeds the redline value, put a
