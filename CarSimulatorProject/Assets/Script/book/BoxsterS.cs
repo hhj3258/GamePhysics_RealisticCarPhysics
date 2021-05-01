@@ -5,7 +5,7 @@ public class BoxsterS : Car
     //  BoxsterS 생성자는 Car 생성자를 호출한 후에 BoxterS의 기어 비를 설정함.
     //  박스터S의 스펙
     //  mass = 1393.0 kg (with 70 kg driver)
-    //  area = 1.94 m^2 
+    //  front area = 1.94 m^2 
     //  Cd = 0.31
     //  redline = 7200 rpm
     //  finalDriveRatio = 3.44

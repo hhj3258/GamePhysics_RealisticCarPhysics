@@ -35,18 +35,36 @@ public class CarController : MonoBehaviour
         time = 0.0;
         density = 1.2;
         car = new BoxsterS(x0, y0, z0, vx0, vy0, vz0, time, density);
+        carRB = this.transform.GetComponent<Rigidbody>();
     }
 
     private float tempDiv = 0.326f;
     private float realtime = 0f;
+    private double timeIncrement;
+    
+    float accel = 0.0f;
+    private bool isGnd = false;
+
+
     private void FixedUpdate()
     {
+        if(transform.position.y > 0.9)
+            accel += -9.81f * Time.fixedDeltaTime;
+        else
+        {
+            accel = 0f;
+        }
+        var position = transform.position;
+        carRB.velocity=new Vector3(0f, accel, 0f);
+        Debug.Log(car.Mass);
+        
+        //max rpm 도달 시간 출력
         if (car.OmegaE <= 8000.0)
         {
             txtTemp.text = realtime + "";
         }
 
-        realtime += Time.deltaTime;
+        realtime += Time.fixedDeltaTime;
         
         
         //  Display the current time
@@ -56,7 +74,10 @@ public class CarController : MonoBehaviour
         //  Convert the velocity from m/s to km/hr and
         //  only show integer values
         velocityTextBox.text = "" + (int)(car.GetVx() * 3.6) ;     //시간과 관련
-
+        
+        this.transform.Translate(new Vector3(0f, 0f, (float)(car.GetVx() * 3.6 * (float)timeIncrement)));   //거리=속도*시간
+        //Debug.Log((float)(car.GetVx() * 3.6 * (float)timeIncrement));
+        
         //  Only show integer values for rpm, gear number, 
         //  and distance.
         rpmTextBox.text = "" + (int)car.OmegaE;
@@ -79,7 +100,7 @@ public class CarController : MonoBehaviour
             //car.Mode = "cruising";
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || car.OmegaE > 7500)   //테스트
         {
             car.ShiftGear(1);
         }
@@ -90,7 +111,7 @@ public class CarController : MonoBehaviour
         
         //  Update the car velocity and position at the next
         //  time increment. 
-        double timeIncrement = 0.06 * tempDiv;  //시간과 관련
+        timeIncrement = 0.06 * tempDiv;  //시간과 관련
         car.UpdateLocationAndVelocity(timeIncrement);
 
         //  Compute the new engine rpm value
@@ -98,9 +119,8 @@ public class CarController : MonoBehaviour
             * car.FinalDriveRatio / (2.0 * Math.PI * car.WheelRadius);      //시간과 관련
         car.OmegaE = rpm;
         
-        //  If the rpm exceeds the redline value, put a
-        //  warning message on the screen. First, clear the
-        //  message textfield of any existing messages. 
+        // rpm이 redline을 넘어서면 Warning
+        // rpm이 8000을 넘어서면 엔진 정지
         messageTextBox.text = "";
         if (car.OmegaE > car.Redline)
         {
@@ -116,6 +136,8 @@ public class CarController : MonoBehaviour
         
         
     }
-    
-    
+
+
+
+
 }

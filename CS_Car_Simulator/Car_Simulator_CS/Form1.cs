@@ -378,6 +378,12 @@ namespace Car_Simulator_CS
         //  This method is called by the Timer every 0.05 seconds.
         public void ActionPerformed(object source, EventArgs e)
         {
+            //테스트
+            if(car.OmegaE > 7500)
+            {
+                car.ShiftGear(1);
+            }
+
 
             //  Figure out if the car is accelerating,
             //  cruising, or braking, and set the mode of
