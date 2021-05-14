@@ -175,7 +175,7 @@ namespace Car_Simulator_CS
             accelButton.Top = 250;
             accelButton.Left = buttonLeft;
             accelButton.Checked = true;
-
+            0.0
             cruiseButton = new RadioButton();
             cruiseButton.Text = "Cruise";
             cruiseButton.Height = buttonHeight;
@@ -383,7 +383,14 @@ namespace Car_Simulator_CS
             {
                 car.ShiftGear(1);
             }
+            if((int)(car.GetVx() * 3.6) > 270)
+            {
+                //  stop the timer.
+                gameTimer.Stop();
 
+                //  Update the display.
+                UpdateDisplay();
+            }
 
             //  Figure out if the car is accelerating,
             //  cruising, or braking, and set the mode of

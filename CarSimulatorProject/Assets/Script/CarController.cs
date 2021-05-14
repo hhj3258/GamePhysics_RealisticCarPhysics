@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     public TextMeshProUGUI gearTextBox;
     public TextMeshProUGUI distanceTextBox;
     
-    public TextMeshProUGUI txtTemp;
+    public TextMeshProUGUI maxSpeedTime;
     
     private double x0, y0, z0;
     private double vx0, vy0, vz0;
@@ -38,31 +38,31 @@ public class CarController : MonoBehaviour
         carRB = this.transform.GetComponent<Rigidbody>();
     }
 
-    private float tempDiv = 0.326f;
+    private float tempDiv = 0.326f; //계산량
     private float realtime = 0f;
     private double timeIncrement;
     
-    float accel = 0.0f;
-    private bool isGnd = false;
+    float vel = 0.0f;
+    //private bool isGnd = false;
 
 
     private void FixedUpdate()
     {
-        if(transform.position.y > 0.9)
-            accel += -9.81f * Time.fixedDeltaTime;
+        //중력
+        if(transform.position.y > 0.05)
+            vel += -9.81f * Time.fixedDeltaTime;
         else
         {
-            accel = 0f;
+            vel = 0f;
         }
-        var position = transform.position;
-        carRB.velocity=new Vector3(0f, accel, 0f);
-        Debug.Log(car.Mass);
+        carRB.velocity=new Vector3(0f, vel, 0f);
+
         
-        //max rpm 도달 시간 출력
-        if (car.OmegaE <= 8000.0)
-        {
-            txtTemp.text = realtime + "";
-        }
+        // //max rpm 도달 시간 출력
+        // if (car.OmegaE <= 8000.0)
+        // {
+        //     
+        // }
 
         realtime += Time.fixedDeltaTime;
         
@@ -74,6 +74,11 @@ public class CarController : MonoBehaviour
         //  Convert the velocity from m/s to km/hr and
         //  only show integer values
         velocityTextBox.text = "" + (int)(car.GetVx() * 3.6) ;     //시간과 관련
+
+        if ((int) (car.GetVx() * 3.6) < 271)
+        {
+            maxSpeedTime.text = realtime + "";
+        }
         
         this.transform.Translate(new Vector3(0f, 0f, (float)(car.GetVx() * 3.6 * (float)timeIncrement)));   //거리=속도*시간
         //Debug.Log((float)(car.GetVx() * 3.6 * (float)timeIncrement));
@@ -131,11 +136,12 @@ public class CarController : MonoBehaviour
             messageTextBox.text = "You have blown the engine!";
             //gameTimer.Stop();
         }
-        
-        
-        
-        
+
     }
+    
+    
+    
+    
 
 
 
