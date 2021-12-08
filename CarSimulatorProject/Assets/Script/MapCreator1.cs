@@ -5,17 +5,28 @@ using UnityEngine;
 
 public class MapCreator1 : MonoBehaviour
 {
-    [SerializeField] private GameObject maps;
+    NewCarController newCarController;
+    public GameObject Map;
+    public GameObject Tile;
+    static int cnt = 1;
 
-    private int cnt = 1;
-    private void OnTriggerExit(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log(cnt);
-            Instantiate(maps, new Vector3(0,0,transform.position.z+100f), Quaternion.identity);
-            cnt++;
-        }
+        Application.targetFrameRate = 60;
+        newCarController = FindObjectOfType<NewCarController>();
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="Player")
+        {
+            Instantiate(Tile, new Vector3(-2.2f, 1.8f, 72 * cnt++), Quaternion.identity, Map.transform);
+            Invoke("destroyThis", 3f);
+        }
+    }
+
+    void destroyThis()
+    {
+        Destroy(Tile);
     }
 }
