@@ -69,7 +69,7 @@ namespace Car_Simulator_CS
             car = new BoxsterS(x0, y0, z0, vx0, vy0, vz0, time, density);
 
             //  Set up images
-            carIcon = Image.FromFile("C:/Users/hhj32/Desktop/CapstoneDesign/PDF_Physics_For_Gameprogrammer/CS_Car_Simulator/porscheCartoon.jpg");
+            carIcon = Image.FromFile("C:/Users/hhj32/Desktop/GamePhysics_RealisticCarPhysics/CS_Car_Simulator/porscheCartoon.jpg");
             carWidth = carIcon.Width;
             carHeight = carIcon.Height;
 
@@ -175,7 +175,7 @@ namespace Car_Simulator_CS
             accelButton.Top = 250;
             accelButton.Left = buttonLeft;
             accelButton.Checked = true;
-            0.0
+
             cruiseButton = new RadioButton();
             cruiseButton.Text = "Cruise";
             cruiseButton.Height = buttonHeight;
