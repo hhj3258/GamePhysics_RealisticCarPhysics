@@ -59,6 +59,16 @@ public class NewCarController : MonoBehaviour
         {
             car.ShiftGear(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            car.ShiftGear(-1);
+        }
+
+        if(car.OmegaE > 7000)
+        {
+            car.ShiftGear(1);
+        }
     }
 
     // Update is called once per frame

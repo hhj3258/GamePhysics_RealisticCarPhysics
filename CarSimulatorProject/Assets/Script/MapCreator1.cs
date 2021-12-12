@@ -21,7 +21,7 @@ public class MapCreator1 : MonoBehaviour
         if(other.tag=="Player")
         {
             Instantiate(Tile, new Vector3(-2.2f, 1.8f, 72 * cnt++), Quaternion.identity, Map.transform);
-            Invoke("destroyThis", 3f);
+            Invoke("destroyThis", 5f);
         }
     }
 
