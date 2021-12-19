@@ -1,7 +1,7 @@
-# (진행중)게임물리학 자동차 물리 구현 프로젝트
+# 자동차 물리 구현
 
 ## 개요
-- 실제적인 자동차 게임물리 구현   
+- 실제적인 자동차 물리 구현   
 - 자동차의 게임물리 구현에 포커싱을 맞추기 위해 기본적인 강체의 운동 등의 물리는 Unity의 기본 컴포넌트를 사용   
 - 자동차의 엔진, 기어 변속, 브레이크 등의 물리 구현에 초점을 맞춰 진행   
 ![image](https://user-images.githubusercontent.com/70702088/116791066-d3f83a00-aaf2-11eb-98f5-fe750259602d.png)
@@ -58,11 +58,11 @@ Fourth-Order Runge-Kutta 방정식
     }
 ```
 
-## 2차원 평면
+## 2차원
 - WindowForm을 사용해서 2차원 상에서 시뮬레이터 구현   
 ![image](https://user-images.githubusercontent.com/70702088/116791169-7b756c80-aaf3-11eb-812a-feb12570c991.png)
 
 ## 3차원
 - Unity로 3차원 상에서 구현   
-- 향후 유니티 휠 콜라이더를 제거하고 구현 예정   
-![image](https://user-images.githubusercontent.com/70702088/116791227-ce4f2400-aaf3-11eb-8302-b1b7721bee44.png)
+![image](https://user-images.githubusercontent.com/70702088/146675614-898de19c-56b2-45fc-91ff-3223bd8f5931.png)
+
